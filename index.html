@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TwitBuy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+	<script type="text/javascript" src="jquery.js"></script>
+		<script type="text/javascript" src="jquery.min.js"></script>
+		<script type="text/javascript" src="jquery.livetwitter.js"></script>
+		<script type="text/javascript" src="jquery.livetwitter.min.js"></script>
+    <link href="bootstrap.css" rel="stylesheet">
+    
+    <style type="text/css">
+      body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 50px;
+        line-height: 1;
+      }
+
+    </style>
+    <link href="bootstrap-responsive.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+  </head>
+
+  <body>
+
+    <div class="container-narrow">
+
+      <div class="masthead">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="#">Home</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+        <h3 class="muted">TwitBuy</h3>
+      </div>
+
+      <hr>
+
+      <div class="jumbotron">
+        <h1>TwitBuy</h1>
+        <input type="text" id="searchBar" class="input-xlarge" placeholder="What do you want to buy? ex. iPad">
+		<br>
+		<button id="search" class="btn btn-primary">Search</button>
+		<button id="now" class="btn btn-info">What's on sale?</button>
+		
+		
+      </div>
+		
+      <hr>
+		<div id="tweets"></div>
+      <hr>
+		<div class="jumbotron"><h4>Search Twitter for people selling what you're looking for!</h4></div>
+      <div class="footer">
+        <p>&copy; Aadil Razvi 2012</p>
+      </div>
+
+    </div> <!-- /container -->
+</body>
+    <!-- Le javascript
+    ================================================== -->
+    
+    <script>
+	
+	
+	$('#search').click(function(){
+		var userInput = $('#searchBar').val();
+		$("#tweets").liveTwitter('"want to buy"' + "'?'" + userInput, {limit: 200, rpp:10});
+
+	})
+	$('#now').click(function(){
+		$("#tweets").liveTwitter('"want to buy"' + "'?'", {limit: 200, rpp:10});
+
+	})
+	$(document).on('click', '#search', function(){
+		$(this).remove();
+	})
+	
+	$(document).on('click', '#now', function(){
+		$(this).remove();
+	})
+	
+	</script>
+    
+    <!-- Placed at the end of the document so the pages load faster -->
+		
+  
+</html>
